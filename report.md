@@ -49,7 +49,8 @@ In this section, the five vulnerabilities selected and illustrated from OWASP 20
 ### Flaw 1: A01:2021-Broken Access Control
 Location: views.py, `insecure_direct_object_reference.html`
 
-Description: When the users put a `doc_id` in the browser search bar such as `/vulnerabilities/insecure-direct-object-reference/?doc_id=1`, the app allows them to access that document. The users should only reach documents which belong to them rather than other users' ones. However, the flaw is that there is no checks done to verify that the document belongs to the user which sent the request. Therefore, any registered, authenticated user can access any document in the app (including other users' documents) by just changing the `doc_id` parameter.
+Description: https://github.com/ozkanali357/Introduction-to-Cybersecurity-Project-1/blob/main/vulnerabilities/views.py#L8
+- When the users put a `doc_id` in the browser search bar such as `/vulnerabilities/insecure-direct-object-reference/?doc_id=1`, the app allows them to access that document. The users should only reach documents which belong to them rather than other users' ones. However, the flaw is that there is no checks done to verify that the document belongs to the user which sent the request. Therefore, any registered, authenticated user can access any document in the app (including other users' documents) by just changing the `doc_id` parameter.
 
 Demonstration: First of all, the user should go to this link (http://127.0.0.1:8000/vulnerabilities/broken-authentication/) and login with a valid username and password such as "alice" and "password123". After logging in, the user can visit a URL which shows the contents of a document with ID 1 (http://127.0.0.1:8000/vulnerabilities/insecure-direct-object-reference/?doc_id=1) after that, the user can change the ID number to 2 to access documents belonging to other users (http://127.0.0.1:8000/vulnerabilities/insecure-direct-object-reference/?doc_id=2). It can be seen who does the documents belong to in the admin pannel.
 
@@ -60,7 +61,8 @@ Summary: This vulnerability portrayed that if access control is missing, then it
 ### Flaw 2: A07:2021-Identification and Authentication Failures
 Location: views.py, `broken_authentication.html`
 
-Description: Passwords are stored and checked in plaintext, and if there are multiple failed attempts to login, there is no account lockout. Furthermore, there is no secure authentication and password hashing. For this reason, the system is open to attacks and database leaks.
+Description: https://github.com/ozkanali357/Introduction-to-Cybersecurity-Project-1/blob/main/vulnerabilities/views.py#L29
+- Passwords are stored and checked in plaintext, and if there are multiple failed attempts to login, there is no account lockout. Furthermore, there is no secure authentication and password hashing. For this reason, the system is open to attacks and database leaks.
 
 Demonstration: http://127.0.0.1:8000/vulnerabilities/broken-authentication/
 - The user should navigate to `/vulnerabilities/broken-authentication/` and try logging in with any username and password from the database like `alice`, `password123`. There is no account lockout or password hashing.
@@ -72,7 +74,8 @@ Summary: This flaw conveys that weak authentication can result in attackers gett
 ### Flaw 3: A03:2021-Injection
 Location: views.py, `cross_site_scripting.html`
 
-Description: Without escaping the user input is rendered. This allows attackers to inject and execute malicious scripts in the browser. For instance, a JavaScript alertteri will be triggered if `<script>alert('XSS')</script>` is entered.
+Description: https://github.com/ozkanali357/Introduction-to-Cybersecurity-Project-1/blob/main/vulnerabilities/views.py#L56
+- Without escaping the user input is rendered. This allows attackers to inject and execute malicious scripts in the browser. For instance, a JavaScript alertteri will be triggered if `<script>alert('XSS')</script>` is entered.
 
 Demonstration: http://127.0.0.1:8000/vulnerabilities/cross-site-scripting/
 - The user should go to `/vulnerabilities/cross-site-scripting/`, enter `<script>alert('XSS')</script>` in the input box and submit. The script will work in the browser.
@@ -85,7 +88,8 @@ Location: views.py, `sql_injection.html`
 
 (Here is another problem connected with the same vulnerability. Trigger them separately, one by one.)
 
-Description: With unsanitized user input, raw SQL queries are constructed. This allows SQL injection. For example, the query can be manipulated and unintended data can be accessed by entering `1 OR 1=1` as the user ID.
+Description: https://github.com/ozkanali357/Introduction-to-Cybersecurity-Project-1/blob/main/vulnerabilities/views.py#L73
+- With unsanitized user input, raw SQL queries are constructed. This allows SQL injection. For example, the query can be manipulated and unintended data can be accessed by entering `1 OR 1=1` as the user ID.
 
 Demonstration: http://127.0.0.1:8000/vulnerabilities/sql-injection/
 - When navigated to `/vulnerabilities/sql-injection/`, `1 OR 1=1` is entered as the user ID, and submitted. SQL injection is shown when the query returns all users.
@@ -97,7 +101,8 @@ Summary: This problem critiques that SQL injection attacks can happen because of
 ### Flaw 4: A02:2021-Cryptographic Failures
 Location: models.py, `cryptographic_failures.html`
 
-Description: The password is displayed in the application because they are stored in plaintext in the database. Data breach possibilities increade dramaticaly because of this, as sensitive data is exposed. Attackers can see all of the users' passwords if they can access to the database or rendered page.
+Description: https://github.com/ozkanali357/Introduction-to-Cybersecurity-Project-1/blob/main/vulnerabilities/views.py#L97
+- The password is displayed in the application because they are stored in plaintext in the database. Data breach possibilities increade dramaticaly because of this, as sensitive data is exposed. Attackers can see all of the users' passwords if they can access to the database or rendered page.
 
 Demonstration: http://127.0.0.1:8000/vulnerabilities/cryptographic-failures/
 - How sensitive data is exposed is shown through the page of `/vulnerabilities/cryptographic-failures/`. It has a table with all usernames and their plaintext passwords.
@@ -109,7 +114,8 @@ Summary: Serious security risks can arise if senitive data is stored and shown i
 ### Flaw 5: A05:2021-Security Misconfiguration
 Location: settings.py, `security_misconfiguration.html`
 
-Description: Sensitive error information can be exposed if the application runs with `DEBUG=True`. Django will show a detailed error page with stack trace and configuration info when a user visits a non-existent URL.
+Description: https://github.com/ozkanali357/Introduction-to-Cybersecurity-Project-1/blob/main/vulnerabilities/views.py#L104
+- Sensitive error information can be exposed if the application runs with `DEBUG=True`. Django will show a detailed error page with stack trace and configuration info when a user visits a non-existent URL.
 
 Demonstration: http://127.0.0.1:8000/vulnerabilities/does-not-exist/
 - When visited the page `/vulnerabilities/does-not-exist/` while `DEBUG=True`, Django will display a detailed error page.
