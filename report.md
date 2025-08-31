@@ -1,6 +1,6 @@
 # OWASP Django Demo (Introduction to Cyber Security Project Essay)
 
-GitHub Link: [https://github.com/yourusername/django-owasp-demo](https://github.com/yourusername/django-owasp-demo)
+GitHub Link: https://github.com/ozkanali357/Introduction-to-Cybersecurity-Project-1.git
 
 ## Introduction
 
@@ -12,8 +12,8 @@ The below steps are to run the project locally:
 
 1. The repository is cloned.
    ```
-   git clone https://github.com/yourusername/django-owasp-demo.git
-   cd django-owasp-demo
+   git clone https://github.com/ozkanali357/Introduction-to-Cybersecurity-Project-1.git
+   cd Introduction-to-Cybersecurity-Project-1
    ```
 
 2. A virtual environment is created.
