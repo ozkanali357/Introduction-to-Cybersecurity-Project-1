@@ -1,6 +1,6 @@
 # OWASP Django Demo (Introduction to Cyber Security Project Essay)
 
-GitHub Link: [https://github.com/yourusername/django-owasp-demo](https://github.com/yourusername/django-owasp-demo)
+GitHub Link: https://github.com/ozkanali357/Introduction-to-Cybersecurity-Project-1.git
 
 ## Introduction
 
