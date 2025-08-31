@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flaw 3.1</title>
+</head>
+<body>
+    <!-- vulnerabilities/templates/vulnerabilities/sql_injection.html -->
+    <form method="get">
+        <label>User ID:</label>
+        <input type="text" name="user_id">
+        <button type="submit">Search</button>
+    </form>
+    {% if user_data %}
+        <p>Result: {{ user_data }}</p>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flaw 3</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="user_input">Enter text:</label>
+        <input type="text" id="user_input" name="user_input">
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if user_input %}
+        <h2>Your Input:</h2>
+        <p>{{ user_input|safe }}</p>
+    {% endif %}
+</body>
+</html>
